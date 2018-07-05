@@ -6,17 +6,20 @@ try:
     
     cursor = con.cursor()
 
-    query="select * from Authors_Titles"
+    query="select * from Authors"
 
     cursor.execute(query)
-    data=cursor.fatchall()
-    print('Authors_Title_ID: {}, AuthorID: {}, TitleId: {}'.format(row[0], row[1], row[2]))
+    data=cursor.fetchall()
+    for row in data:
+        print('AuthorID: {}, FirstName: {} MiddleName:{},LastName:{}'.format(row[0], row[1], row[2],row[3]))
     
-    query1= "update Authors_Titles set AuthorID=AuthorID+1 where AuthoerId = 10001 "
+    query1= "update Authors set FirstName='shivam' "
     
     cursor.execute(query1)
-    data1=cursor.fatchall()
-    print('Authors_Title_ID: {}, AuthorID: {}, TitleId: {}.format(row[0], row[1], row[2]))
+    
+    data1=cursor.fetchall()
+    for row in data1:
+        print('AuthorID: {}, FirstName: {} MiddleName:{},LastName:{}'.format(row[0], row[1], row[2],row[3]))
     
     con.commit()
     
